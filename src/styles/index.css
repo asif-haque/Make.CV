@@ -1,0 +1,10 @@
+.edit-info {
+  display: inline-block;
+}
+.cv {
+  background-color: black;
+  width: 70%;
+  height: 100%;
+  display: inline-block;
+  color: white;
+}
