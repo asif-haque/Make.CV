@@ -1,15 +1,6 @@
-// Have to make an array containing projects
-
 import { useState } from "react";
 
-function Project() {
-  //   const [projects, setProjects] = useState([]);
-  const [value, setvalue] = useState({
-    project: "",
-    link: "",
-    github: "",
-    des: "",
-  });
+function Project({ valuePr, setvaluePr, projects, setProjects }) {
   const [isExpanded, setisExpanded] = useState(false);
 
   function handleAdd() {
@@ -17,17 +8,24 @@ function Project() {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    setProjects([...projects, valuePr]);
+    setisExpanded(!isExpanded);
+    // setvaluePr({ project: "", link: "", github: "", des: "" });
   }
 
   function handleChange(e) {
     const id = e.target.id;
     const newVal = e.target.value;
-    setvalue({ ...value, [id]: newVal }); //id used as the key to the appropriate value
+    setvaluePr({ ...valuePr, [id]: newVal }); //id used as the key to the appropriate value
+  }
+
+  function handleCancel() {
+    setisExpanded(false);
   }
   return (
     <>
       <h1>Projects</h1>
-      <button onClick={handleAdd}>+ Add Project</button>
+      {!isExpanded && <button onClick={handleAdd}>+ Add Project</button>}
       {/* {projects.map((project) => (
         <div>{project}</div>
       ))} */}
@@ -37,7 +35,7 @@ function Project() {
           <input
             type="text"
             id="project"
-            value={value.project}
+            value={valuePr.project}
             onChange={handleChange}
             required
           />
@@ -46,7 +44,7 @@ function Project() {
           <input
             type="url"
             id="link"
-            value={value.link}
+            value={valuePr.link}
             onChange={handleChange}
           />
           <br />
@@ -54,9 +52,8 @@ function Project() {
           <input
             type="url"
             id="github"
-            value={value.github}
+            value={valuePr.github}
             onChange={handleChange}
-            required
           />
           <br />
           <label htmlFor="des">Brief Description</label>
@@ -64,11 +61,12 @@ function Project() {
             id="des"
             cols="30"
             rows="3"
-            value={value.des}
+            value={valuePr.des}
             onChange={handleChange}
           ></textarea>
           <br />
           <button type="submit">Save</button>
+          <button onClick={handleCancel}>Cancel</button>
         </form>
       )}
     </>

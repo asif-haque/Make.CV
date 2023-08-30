@@ -53,7 +53,6 @@ function EduInfo({ valueEd, setvalueEd }) {
           id="college"
           value={valueEd.college}
           onChange={handleChange}
-          required
         />
         <br />
         <label htmlFor="degree">Degree</label>
@@ -62,7 +61,14 @@ function EduInfo({ valueEd, setvalueEd }) {
           id="degree"
           value={valueEd.degree}
           onChange={handleChange}
-          required
+        />
+        <br />
+        <label htmlFor="year">Current Year</label>
+        <input
+          type="text"
+          id="year"
+          value={valueEd.year}
+          onChange={handleChange}
         />
         <br />
         <label htmlFor="admYear">Admission Year</label>
@@ -71,7 +77,6 @@ function EduInfo({ valueEd, setvalueEd }) {
           id="admYear"
           value={valueEd.admYear}
           onChange={handleChange}
-          required
         />
         <br />
         <label htmlFor="passingYearColl">Year of Passing</label>
@@ -80,7 +85,6 @@ function EduInfo({ valueEd, setvalueEd }) {
           id="passingYearColl"
           value={valueEd.passingYearColl}
           onChange={handleChange}
-          required
         />
         <br />
         <label htmlFor="cgpa">CGPA</label>
@@ -89,7 +93,6 @@ function EduInfo({ valueEd, setvalueEd }) {
           id="cgpa"
           value={valueEd.cgpa}
           onChange={handleChange}
-          required
         />
         <br />
         <button type="submit">Save</button>

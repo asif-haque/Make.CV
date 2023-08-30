@@ -13,20 +13,38 @@ export default function App() {
     score: "",
     college: "",
     degree: "",
+    year: "",
     admYear: "",
     passingYearColl: "",
     cgpa: "",
   });
-  // const [valueEd, setvalueEd] = useState([]);
+  const [valuePr, setvaluePr] = useState({
+    project: "",
+    link: "",
+    github: "",
+    des: "",
+  });
+  const [projects, setProjects] = useState([]);
+
   return (
     <>
       <div className="edit-info">
         <GenInfo valueGen={valueGen} setvalueGen={setvalueGen} />
         <EduInfo valueEd={valueEd} setvalueEd={setvalueEd} />
-        <Project />
+        <Project
+          valuePr={valuePr}
+          setvaluePr={setvaluePr}
+          projects={projects}
+          setProjects={setProjects}
+        />
       </div>
       <div className="cv">
-        <Cv valueGen={valueGen} valueEd={valueEd} />
+        <Cv
+          valueGen={valueGen}
+          valueEd={valueEd}
+          valuePr={valuePr}
+          projects={projects}
+        />
       </div>
     </>
   );
