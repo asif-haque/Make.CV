@@ -34,17 +34,19 @@ function Cv({ valueGen, valueEd, valuePr, projects }) {
       )}
       <hr />
       {/* PROJECT */}
-      {valuePr.project !== "" && (
+      {projects.length !== 0 && (
         <>
           <h2>Projects</h2>
           {projects.map((item) => {
             return (
-              <div>
-                <a href={item.link}>
-                  <b>{item.project}</b>
+              <div key={item.id}>
+                <a href={item.projectInfo.link}>
+                  <b>{item.projectInfo.project}</b>
                 </a>
-                <div>{item.des}</div>
-                {item.github !== "" && <a href={item.github}>Github Repo</a>}
+                <div>{item.projectInfo.des}</div>
+                {item.projectInfo.github !== "" && (
+                  <a href={item.projectInfo.github}>Github Repo</a>
+                )}
               </div>
             );
           })}
