@@ -11,10 +11,10 @@ function GenInfo({ valueGen, setvalueGen }) {
     setvalueGen({ ...valueGen, [id]: newVal }); //id used as the key to the appropriate value
   }
   return (
-    <>
+    <div className="form-parts">
       <h1>General Information</h1>
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+      <form action="" onSubmit={handleSubmit} className="gen-info">
+        <label htmlFor="name">Name </label>
         <input
           type="text"
           id="name"
@@ -22,7 +22,7 @@ function GenInfo({ valueGen, setvalueGen }) {
           onChange={handleChange}
         />
         <br />
-        <label htmlFor="email">Email ID</label>
+        <label htmlFor="email">Email ID </label>
         <input
           type="email"
           id="email"
@@ -30,7 +30,7 @@ function GenInfo({ valueGen, setvalueGen }) {
           onChange={handleChange}
         />
         <br />
-        <label htmlFor="phone">Contact No.</label>
+        <label htmlFor="phone">Contact No. </label>
         <input
           type="tel"
           id="phone"
@@ -38,9 +38,8 @@ function GenInfo({ valueGen, setvalueGen }) {
           onChange={handleChange}
         />
         <br />
-        <button type="submit">Save</button>
       </form>
-    </>
+    </div>
   );
 }
 

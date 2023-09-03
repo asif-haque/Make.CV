@@ -1,10 +1,97 @@
-.edit-info {
-  display: inline-block;
+* {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
+
+body {
+  /* padding: 1%; */
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.75%;
+}
+
+.navbar-brand {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.6rem;
+}
+
+/* CV component */
 .cv {
-  background-color: black;
-  width: 70%;
-  height: 100%;
-  display: inline-block;
-  color: white;
+  border: 1px solid black;
+  width: 100%;
+  padding: 4%;
+}
+
+.cv h1 {
+  font-size: 2.5rem;
+  line-height: 2;
+}
+
+.cv p {
+  line-height: 1.5;
+}
+
+.cv h3 {
+  font-weight: 600;
+  margin-top: 3%;
+}
+
+.cv .edu {
+  padding: 2% 0;
+}
+
+.cv .projects {
+  padding: 2% 0;
+}
+
+.cv .project {
+  margin-top: 3%;
+  line-height: 1.5;
+}
+
+/* Form component */
+.edit-info {
+  max-width: 35%;
+  padding-right: 3%;
+  line-height: 1.75;
+  font-size: small;
+}
+
+.edit-info input {
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.edit-info textarea {
+  width: 100%;
+}
+
+.edit-info .form-parts {
+  margin-bottom: 5%;
+}
+
+.gen-info {
+}
+
+/* Download Button */
+#download {
+  position: absolute;
+  right: 2.75%;
+}
+
+@media print {
+  .edit-info,
+  .navbar,
+  #download {
+    display: none;
+  }
+
+  .cv {
+    display: block;
+    width: 100%;
+    border: none;
+  }
 }

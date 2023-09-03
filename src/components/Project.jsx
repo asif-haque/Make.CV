@@ -2,12 +2,9 @@ import { useState } from "react";
 import ProjectEdit from "./ProjectEdit";
 
 function Project({ valuePr, setvaluePr, projects, setProjects }) {
-  const [isExpanded, setisExpanded] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
+  const [isExpanded, setisExpanded] = useState(false);
 
-  function handleAdd() {
-    setisExpanded(true);
-  }
   function handleSubmit(e) {
     e.preventDefault();
     // Checking if the project name is empty, no input will be taken
@@ -16,17 +13,10 @@ function Project({ valuePr, setvaluePr, projects, setProjects }) {
       : setProjects([
           ...projects,
           {
-            // projectInfo: {
-            //   projectArr: valuePr.project,
-            //   linkArr: valuePr.link,
-            //   githubArr: valuePr.github,
-            //   desArr: valuePr.des,
-            // },
             projectInfo: valuePr,
             id: crypto.randomUUID(),
           },
         ]);
-    setisExpanded(false);
     setvaluePr({ project: "", link: "", github: "", des: "" });
   }
 
@@ -36,18 +26,14 @@ function Project({ valuePr, setvaluePr, projects, setProjects }) {
     setvaluePr({ ...valuePr, [id]: newVal }); //id used as the key to the appropriate value
   }
 
-  function handleHide() {
-    setisExpanded(false);
-  }
   function handleEdit() {
     // should open a form same as before to let you edit
     setShowEditForm(true);
   }
 
   return (
-    <>
+    <div className="form-parts">
       <h1>Projects</h1>
-      {!isExpanded && <button onClick={handleAdd}>+ Add Project</button>}
       {isExpanded && (
         <form action="" onSubmit={handleSubmit}>
           <label htmlFor="project">Project Name</label>
@@ -84,15 +70,16 @@ function Project({ valuePr, setvaluePr, projects, setProjects }) {
           ></textarea>
           <br />
           <button type="submit">Save</button>
-          <button onClick={handleHide}>Hide</button>
         </form>
       )}
+      <button onClick={() => setisExpanded(!isExpanded)}>
+        {isExpanded ? "Cancel" : "Add"}
+      </button>
       {/* Edit option --- mapping the projects array in this area */}
-      {!showEditForm && projects.length !== 0 && (
-        <button onClick={handleEdit}>Edit Projects</button>
-      )}
-      {projects.length !== 0 && showEditForm && (
-        <button onClick={() => setShowEditForm(false)}>Hide</button>
+      {projects.length !== 0 && (
+        <button onClick={() => setShowEditForm(!showEditForm)}>
+          {showEditForm ? "Hide" : "Edit"}
+        </button>
       )}
       {projects.length !== 0 &&
         showEditForm &&
@@ -100,20 +87,18 @@ function Project({ valuePr, setvaluePr, projects, setProjects }) {
           return (
             <div key={item.id}>
               {/* Edit form */}
-              {
-                <>
-                  <h3>Project {index + 1}</h3>
-                  <ProjectEdit
-                    item={item}
-                    projects={projects}
-                    setProjects={setProjects}
-                  />
-                </>
-              }
+              <>
+                <h3>Project {index + 1}</h3>
+                <ProjectEdit
+                  item={item}
+                  projects={projects}
+                  setProjects={setProjects}
+                />
+              </>
             </div>
           );
         })}
-    </>
+    </div>
   );
 }
 

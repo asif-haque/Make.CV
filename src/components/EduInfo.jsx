@@ -12,7 +12,7 @@ function EduInfo({ valueEd, setvalueEd }) {
     // setvalueEd([...valueEd, { [id]: newVal }]);
   }
   return (
-    <>
+    <div className="form-parts">
       <h1>Educational Information</h1>
       <form action="" onSubmit={handleSubmit}>
         <label htmlFor="school">High-School Name *</label>
@@ -63,7 +63,7 @@ function EduInfo({ valueEd, setvalueEd }) {
           onChange={handleChange}
         />
         <br />
-        <label htmlFor="year">Current Year</label>
+        <label htmlFor="year">Current Academic Year</label>
         <input
           type="text"
           id="year"
@@ -97,7 +97,7 @@ function EduInfo({ valueEd, setvalueEd }) {
         <br />
         <button type="submit">Save</button>
       </form>
-    </>
+    </div>
   );
 }
 

@@ -24,6 +24,9 @@ function ProjectEdit({ item, projects, setProjects }) {
           )
         );
   }
+  function handleDelete() {
+    setProjects(projects.filter((filterItem) => filterItem.id !== item.id));
+  }
 
   return (
     <>
@@ -62,6 +65,7 @@ function ProjectEdit({ item, projects, setProjects }) {
         ></textarea>
         <br />
         <button type="submit">Apply Changes</button>
+        <button onClick={handleDelete}>Delete</button>
       </form>
     </>
   );
